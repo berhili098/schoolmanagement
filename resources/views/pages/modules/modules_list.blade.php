@@ -27,10 +27,10 @@
     <div class="bg-body-light">
         <div class="content content-full">
             <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center">
-                <h1 class="flex-grow-1 fs-3 fw-semibold my-2 my-sm-3">Semestres</h1>
+                <h1 class="flex-grow-1 fs-3 fw-semibold my-2 my-sm-3">Modules</h1>
                 <nav class="flex-shrink-0 my-2 my-sm-0 ms-sm-3" aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item">Semestres</li>
+                        <li class="breadcrumb-item">Modules</li>
                         <li class="breadcrumb-item active" aria-current="page">lister</li>
                     </ol>
                 </nav>
@@ -41,7 +41,7 @@
         <!-- Info -->
         <div class="block block-rounded">
             <div class="block-header block-header-default">
-                <h3 class="block-title">Lister les semestres</h3>
+                <h3 class="block-title">Lister les Modules</h3>
             </div>
         </div>
         <!-- END Info -->
@@ -63,12 +63,13 @@
                 <table class="table table-bordered table-striped table-vcenter js-dataTable-buttons">
                     <thead>
                         <tr>
-                            <th class="text-center" style="width: 80px;">#</th>
-                            <th>Nom de module</th>
-                            <th class="d-none d-sm-table-cell">Nom du module</th>
+                            <th class="text-center">#</th>
+                            <th class="d-none d-sm-table-cell">Nom de module</th>
+                            <th class="d-none d-sm-table-cell col-2">Nom du module</th>
                             <th class="d-none col-2">Nom d'enseignant</th>
                             <th class="d-none d-sm-table-cell">Filiere</th>
                             <th class="d-none d-sm-table-cell col-2">Salle</th>
+                            <th class="d-none d-sm-table-cell col-2">Nb heure</th>
                             <th class="d-none d-sm-table-cell col-3">Date de creation</th>
                         </tr>
                     </thead>
@@ -89,6 +90,9 @@
                                     {{ $module->filiere->nom_filiere }}
                                 <td class="d-none d-sm-table-cell">
                                     {{ $module->salle->nom}}
+                                </td>
+                                <td class="d-none d-sm-table-cell">
+                                    {{ $module->nb_heure}}
                                 </td>
                                 <td class="d-none d-sm-table-cell">
                                     {{ $module->created_at }}

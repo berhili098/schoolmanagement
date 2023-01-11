@@ -17,10 +17,10 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $users = User::all()->count();
-        $modules = module::all()->count();
-        $filieres = Filiere::all()->count();
-        $salles = salle::all()->count();
+        $users = User::all();
+        $modules = module::all();
+        $filieres = Filiere::all();
+        $salles = salle::all();
         return view("dashboard", compact('users', 'modules', 'filieres', 'salles'));
     }
 
