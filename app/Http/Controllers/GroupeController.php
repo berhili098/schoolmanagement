@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Filiere;
+use App\Models\Groupe;
+use App\Models\User;
 use Illuminate\Http\Request;
 
-class EtudiantController extends Controller
+class GroupeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +16,8 @@ class EtudiantController extends Controller
      */
     public function index()
     {
-        //
+        $groupes=Groupe::all();
+        return view('pages.groupe.groupe_list',compact('groupes'));
     }
 
     /**
@@ -22,8 +26,10 @@ class EtudiantController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        //
+    {   $filieres= Filiere::all();
+        $users = User::all();
+
+        return view('pages.groupe.groupe_add',compact('users', 'filieres'));
     }
 
     /**
@@ -34,7 +40,24 @@ class EtudiantController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $request->validate([
+            'fi_id' => 'required',
+            'en_id' => 'required',
+            'section'=>'required',
+            'type'=>'required',
+        ]);
+
+        $groupe = new Groupe([
+
+            'fi_id' => $request->get('fi_id'),
+            'en_id' => $request->get('en_id'),
+            'section' => $request->get('section'),
+            'type' => $request->get('type'),
+
+        ]);
+        $groupe->save();
+        return redirect('/groupe/list')->with('success', 'Groupe saved!');
     }
 
     /**

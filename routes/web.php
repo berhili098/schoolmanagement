@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\FiliereController;
 use App\Http\Controllers\SemestreController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -48,3 +49,7 @@ Route::get('/salle/list', [App\Http\Controllers\SalleController::class, 'index']
 Route::get('/salle/add', [App\Http\Controllers\SalleController::class, 'create'])->name('salleadd');
 Route::post('/salle/store', [App\Http\Controllers\SalleController::class, 'store'])->name('sallestore');
 
+
+Route::get('/groupe/add', [App\Http\Controllers\GroupeController::class, 'create'])->name('groupeadd');
+Route::post('/groupe/store', [App\Http\Controllers\GroupeController::class, 'store'])->name('groupestore');
+Route::get('/groupe/list', [App\Http\Controllers\GroupeController::class, 'index'])->name('groupelist');
