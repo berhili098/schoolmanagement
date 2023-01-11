@@ -8,7 +8,7 @@ use App\Models\salle;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-class ModuleController extends Controller
+class DashboardController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +17,11 @@ class ModuleController extends Controller
      */
     public function index()
     {
-        $modules = module::all();
-        return view("pages.modules.modules_list")->with("modules", $modules);
+        $users = User::all()->count();
+        $modules = module::all()->count();
+        $filieres = Filiere::all()->count();
+        $salles = salle::all()->count();
+        return view("dashboard", compact('users', 'modules', 'filieres', 'salles'));
     }
 
     /**
@@ -28,10 +31,7 @@ class ModuleController extends Controller
      */
     public function create()
     {
-        $users = User::all();
-        $filieres = Filiere::all();
-        $salles = salle::all();
-        return view("pages.modules.modules_add")->with("users", $users)->with("filieres", $filieres)->with("salles", $salles);
+        //
     }
 
     /**
@@ -42,16 +42,7 @@ class ModuleController extends Controller
      */
     public function store(Request $request)
     {
-        $module = new module();
-        $module->nom_module = $request->nom_module;
-        $module->nb_heure = $request->nb_heure;
-        $module->ens_id = $request->ens_id;
-        $module->fil_id = $request->fil_id;
-        $module->sal_id = $request->sal_id;
-        $module->save();
-        $modules = module::all();
-        return view("pages.modules.modules_list")->with("modules", $modules);
-
+        //
     }
 
     /**

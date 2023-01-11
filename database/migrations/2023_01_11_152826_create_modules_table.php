@@ -19,8 +19,10 @@ return new class extends Migration
             $table->integer("nb_heure");
             $table->bigInteger("ens_id")->unsigned()->index();
             $table->bigInteger("fil_id")->unsigned()->index();
+            $table->bigInteger('sal_id')->unsigned()->index();
             $table->foreign('ens_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('fil_id')->references('id')->on('filieres')->onDelete('cascade');
+            $table->foreign('sal_id')->references('id')->on('salles')->onDelete('cascade');
             $table->timestamps();
         });
     }

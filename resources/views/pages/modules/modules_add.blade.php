@@ -48,11 +48,6 @@
                                             <option value={{ $user->id }}>{{ $user->name }}</option>
                                         @endforeach
                                     </select>
-                                    @if ($errors->any())
-                                        <span class="invalid-feedback" role="alert" style="display: block">
-                                            <strong>{{ $errors->first() }}</strong>
-                                        </span>
-                                    @endif
                                 </div>
                                 <div class="mb-4">
                                     <label class="form-label" for="filiere">Filiere<span
@@ -62,11 +57,15 @@
                                             <option value={{ $filiere->id }}>{{ $filiere->nom_filiere }}</option>
                                         @endforeach
                                     </select>
-                                    @if ($errors->any())
-                                        <span class="invalid-feedback" role="alert" style="display: block">
-                                            <strong>{{ $errors->first() }}</strong>
-                                        </span>
-                                    @endif
+                                </div>
+                                <div class="mb-4">
+                                    <label class="form-label" for="filiere">Salle<span
+                                            class="text-danger">*</span></label>
+                                    <select name="sal_id" id="sal_id" class="form-control">
+                                        @foreach ($salles as $salle)
+                                            <option value={{ $salle->id }}>{{ $salle->nom }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                                 <div class="mb-4">
                                     <label class="form-label" for="nb_heure">Nombre des heures<span

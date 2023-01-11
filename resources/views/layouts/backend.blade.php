@@ -359,6 +359,27 @@
                                 </li>
                             </ul>
                         </li>
+                        <li class="nav-main-item{{ request()->is('pages/salle/*') ? ' open' : '' }}">
+                            <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true"
+                                aria-expanded="true" href="#">
+                                <i class="nav-main-link-icon fa fa-lightbulb"></i>
+                                <span class="nav-main-link-name">Salles</span>
+                            </a>
+                            <ul class="nav-main-submenu">
+                                <li class="nav-main-item">
+                                    <a class="nav-main-link{{ request()->is('pages/salle/salles_list') ? ' active' : '' }}"
+                                        href={{ route('sallelist') }}>
+                                        <span class="nav-main-link-name">Liste</span>
+                                    </a>
+                                </li>
+                                <li class="nav-main-item">
+                                    <a class="nav-main-link{{ request()->is('pages/semestres/semestres_add') ? ' active' : '' }}"
+                                        href={{ route('salleadd') }}>
+                                        <span class="nav-main-link-name">Ajouter</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
                         <li class="nav-main-heading">More</li>
                         <li class="nav-main-item">
                             <a class="nav-main-link" href="/">

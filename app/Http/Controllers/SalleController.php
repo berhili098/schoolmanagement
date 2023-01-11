@@ -2,23 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Filiere;
-use App\Models\module;
 use App\Models\salle;
-use App\Models\User;
 use Illuminate\Http\Request;
 
-class ModuleController extends Controller
+class SalleController extends Controller
 {
-    /**
+    /**w
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $modules = module::all();
-        return view("pages.modules.modules_list")->with("modules", $modules);
+        $salles=salle::all();
+        return view('pages.salle.salles_list',compact('salles'));
     }
 
     /**
@@ -28,10 +25,7 @@ class ModuleController extends Controller
      */
     public function create()
     {
-        $users = User::all();
-        $filieres = Filiere::all();
-        $salles = salle::all();
-        return view("pages.modules.modules_add")->with("users", $users)->with("filieres", $filieres)->with("salles", $salles);
+        return view('pages.salle.salles_add');
     }
 
     /**
@@ -42,16 +36,19 @@ class ModuleController extends Controller
      */
     public function store(Request $request)
     {
-        $module = new module();
-        $module->nom_module = $request->nom_module;
-        $module->nb_heure = $request->nb_heure;
-        $module->ens_id = $request->ens_id;
-        $module->fil_id = $request->fil_id;
-        $module->sal_id = $request->sal_id;
-        $module->save();
-        $modules = module::all();
-        return view("pages.modules.modules_list")->with("modules", $modules);
+        $request->validate([
+            'nom' => 'required',
+            'capacite' => 'required',
+            'type' => 'required',
+        ]);
 
+        $salle = new salle([
+            'nom' => $request->get('nom'),
+            'capacite' => $request->get('capacite'),
+            'type' => $request->get('type'),
+        ]);
+        $salle->save();
+        return redirect('/salle/list')->with('success', 'Salle saved!');
     }
 
     /**
