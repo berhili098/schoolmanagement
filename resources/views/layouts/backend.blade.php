@@ -261,7 +261,8 @@
                                 <span class="nav-main-link-name">Tableau de bord</span>
                             </a>
                         </li>
-                        <li class="nav-main-heading">Various</li>
+                        @if ( Auth::user()->type == 0 )
+ <li class="nav-main-heading">Various</li>
                         <li class="nav-main-item{{ request()->is('pages/*') ? ' open' : '' }}">
                             <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true"
                                 aria-expanded="true" href="#">
@@ -371,12 +372,50 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-main-heading">More</li>
-                        <li class="nav-main-item">
-                            <a class="nav-main-link" href="/">
-                                <i class="nav-main-link-icon fa fa-globe"></i>
-                                <span class="nav-main-link-name">Landing</span>
+                        <li class="nav-main-item{{ request()->is('pages/groupe/*') ? ' open' : '' }}">
+                            <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true"
+                                aria-expanded="true" href="#">
+                                <i class="nav-main-link-icon fa fa-lightbulb"></i>
+                                <span class="nav-main-link-name">Groupes</span>
                             </a>
+                            <ul class="nav-main-submenu">
+                                <li class="nav-main-item">
+                                    <a class="nav-main-link{{ request()->is('pages/salle/groupe_list') ? ' active' : '' }}"
+                                        href={{ route('groupelist') }}>
+                                        <span class="nav-main-link-name">Liste</span>
+                                    </a>
+                                </li>
+                                <li class="nav-main-item">
+                                    <a class="nav-main-link{{ request()->is('pages/semestres/semestres_add') ? ' active' : '' }}"
+                                        href={{ route('groupeadd') }}>
+                                        <span class="nav-main-link-name">Ajouter</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        @endif
+
+                        <li class="nav-main-heading">Enseignats</li>
+                        <li class="nav-main-item{{ request()->is('pages/groupe/*') ? ' open' : '' }}">
+                            <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true"
+                                aria-expanded="true" href="#">
+                                <i class="nav-main-link-icon fa fa-lightbulb"></i>
+                                <span class="nav-main-link-name">Rattrapage</span>
+                            </a>
+                            <ul class="nav-main-submenu">
+                                <li class="nav-main-item">
+                                    <a class="nav-main-link{{ request()->is('pages/salle/groupe_list') ? ' active' : '' }}"
+                                        href={{ route('groupelist') }}>
+                                        <span class="nav-main-link-name">Liste</span>
+                                    </a>
+                                </li>
+                                <li class="nav-main-item">
+                                    <a class="nav-main-link{{ request()->is('pages/semestres/semestres_add') ? ' active' : '' }}"
+                                        href={{ route('groupeadd') }}>
+                                        <span class="nav-main-link-name">Ajouter</span>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
                 </div>

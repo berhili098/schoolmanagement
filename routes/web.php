@@ -56,8 +56,14 @@ Route::get('/salle/add', [App\Http\Controllers\SalleController::class, 'create']
 Route::post('/salle/store', [App\Http\Controllers\SalleController::class, 'store'])->name('sallestore');
 });
 
+
+Route::get('/groupe/add', [App\Http\Controllers\GroupeController::class, 'create'])->name('groupeadd');
+Route::post('/groupe/store', [App\Http\Controllers\GroupeController::class, 'store'])->name('groupestore');
+Route::get('/groupe/list', [App\Http\Controllers\GroupeController::class, 'index'])->name('groupelist');
+
 Auth::routes();
 
 Route::match(['get', 'post'], '/', function(){
     return redirect('/login');
 });
+
