@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\FiliereController;
+use App\Http\Controllers\SemestreController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,8 +21,18 @@ Route::match(['get', 'post'], '/dashboard', function(){
     return view('dashboard');
 });
 Route::view('/pages/slick', 'pages.slick');
+Route::view('/enseignant/list', 'pages.enseignant.enseignant');
+Route::view('/enseignant/add', 'pages.enseignant.enseignant_add');
 Route::view('/pages/datatables', 'pages.datatables');
 Route::view('/pages/blank', 'pages.blank');
+
+Route::get('/filieres/list', [FiliereController::class, 'index'])->name('filieres.list');
+Route::get('/filieres/add', [FiliereController::class, 'create'])->name('filieres.add');
+Route::post('/filieres/store', [FiliereController::class, 'store'])->name('filieres.store');
+
+Route::get('/semestres/list', [SemestreController::class, 'index'])->name('semestres.list');
+Route::get('/semestres/add', [SemestreController::class, 'create'])->name('semestres.add');
+Route::post('/semestres/store', [SemestreController::class, 'store'])->name('semestres.store');
 
 Auth::routes();
 
