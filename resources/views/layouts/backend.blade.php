@@ -295,13 +295,13 @@
                                 <li class="nav-main-item">
                                     <a class="nav-main-link{{ request()->is('pages/filieres/filieres_list') ? ' active' : '' }}"
                                         href={{ route('filieres.list') }}>
-                                        <span class="nav-main-link-name">Lister les filières</span>
+                                        <span class="nav-main-link-name">Liste</span>
                                     </a>
                                 </li>
                                 <li class="nav-main-item">
                                     <a class="nav-main-link{{ request()->is('pages/filieres/filieres_add') ? ' active' : '' }}"
                                         href={{ route('filieres.add') }}>
-                                        <span class="nav-main-link-name">Ajouter une filière</span>
+                                        <span class="nav-main-link-name">Ajouter</span>
                                     </a>
                                 </li>
 
@@ -319,13 +319,13 @@
                                 <li class="nav-main-item">
                                     <a class="nav-main-link{{ request()->is('pages/semestres/semestres_list') ? ' active' : '' }}"
                                         href={{ route('semestres.list') }}>
-                                        <span class="nav-main-link-name">Lister les semesteres</span>
+                                        <span class="nav-main-link-name">Liste</span>
                                     </a>
                                 </li>
                                 <li class="nav-main-item">
                                     <a class="nav-main-link{{ request()->is('pages/semestres/semestres_add') ? ' active' : '' }}"
                                         href={{ route('semestres.add') }}>
-                                        <span class="nav-main-link-name">Ajouter un semestere</span>
+                                        <span class="nav-main-link-name">Ajouter</span>
                                     </a>
                                 </li>
                             </ul>
@@ -340,13 +340,13 @@
                                 <li class="nav-main-item">
                                     <a class="nav-main-link{{ request()->is('pages/modules/modules_list') ? ' active' : '' }}"
                                         href={{ route('modules.list') }}>
-                                        <span class="nav-main-link-name">Lister les Modules</span>
+                                        <span class="nav-main-link-name">Liste</span>
                                     </a>
                                 </li>
                                 <li class="nav-main-item">
                                     <a class="nav-main-link{{ request()->is('pages/modules/modules_add') ? ' active' : '' }}"
                                         href={{ route('modules.add') }}>
-                                        <span class="nav-main-link-name">Ajouter un Module</span>
+                                        <span class="nav-main-link-name">Ajouter</span>
                                     </a>
                                 </li>
                             </ul>
