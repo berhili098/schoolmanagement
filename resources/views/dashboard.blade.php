@@ -1,158 +1,78 @@
 @extends('layouts.backend')
 
 @section('content')
-  <!-- Hero -->
-  <div class="bg-body-light">
-    <div class="content content-full">
-      <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center">
-        <h1 class="flex-grow-1 fs-3 fw-semibold my-2 my-sm-3">Dashboard</h1>
-        <nav class="flex-shrink-0 my-2 my-sm-0 ms-sm-3" aria-label="breadcrumb">
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item">App</li>
-            <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
-          </ol>
-        </nav>
-      </div>
+    <!-- Hero -->
+    <div class="content">
+        <div class="row items-push">
+            <div class="col-sm-6 col-xl-3">
+                <div class="block block-rounded text-center d-flex flex-column h-100 mb-0">
+                    <div class="block-content block-content-full flex-grow-1">
+                        <div class="item rounded-3 bg-body mx-auto my-3">
+                            <i class="fa fa-users fa-lg text-primary"></i>
+                        </div>
+                        <div class="fs-1 fw-bold">{{$users}}</div>
+                        <div class="text-muted mb-3">Enregistrements</div>
+                    </div>
+                    <div class="block-content block-content-full block-content-sm bg-body-light fs-sm">
+                        <a class="fw-medium" href="">
+                            Lister tout les utilisateurs
+                            <i class="fa fa-arrow-right ms-1 opacity-25"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-xl-3">
+                <div class="block block-rounded text-center d-flex flex-column h-100 mb-0">
+                    <div class="block-content block-content-full flex-grow-1">
+                        <div class="item rounded-3 bg-body mx-auto my-3">
+                            <i class="fa fa-level-up-alt fa-lg text-primary"></i>
+                        </div>
+                        <div class="fs-1 fw-bold">{{$filieres}}</div>
+                        <div class="text-muted mb-3">Filieres</div>
+                    </div>
+                    <div class="block-content block-content-full block-content-sm bg-body-light fs-sm">
+                        <a class="fw-medium" href="javascript:void(0)">
+                            Explore analytics
+                            <i class="fa fa-arrow-right ms-1 opacity-25"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-xl-3">
+                <div class="block block-rounded text-center d-flex flex-column h-100 mb-0">
+                    <div class="block-content block-content-full flex-grow-1">
+                        <div class="item rounded-3 bg-body mx-auto my-3">
+                            <i class="fa fa-book fa-lg text-primary"></i>
+                        </div>
+                        <div class="fs-1 fw-bold">{{$modules}}</div>
+                        <div class="text-muted mb-3">Modules</div>
+                    </div>
+                    <div class="block-content block-content-full block-content-sm bg-body-light fs-sm">
+                        <a class="fw-medium" href="javascript:void(0)">
+                            View all sales
+                            <i class="fa fa-arrow-right ms-1 opacity-25"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-xl-3">
+                <div class="block block-rounded text-center d-flex flex-column h-100 mb-0">
+                    <div class="block-content block-content-full">
+                        <div class="item rounded-3 bg-body mx-auto my-3">
+                            <i class="fa fa-house-user fa-lg text-primary"></i>
+                        </div>
+                        <div class="fs-1 fw-bold">{{$salles}}</div>
+                        <div class="text-muted mb-3">Salles</div>
+                    </div>
+                    <div class="block-content block-content-full block-content-sm bg-body-light fs-sm">
+                        <a class="fw-medium" href="javascript:void(0)">
+                            Withdrawal options
+                            <i class="fa fa-arrow-right ms-1 opacity-25"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-  <!-- END Hero -->
-
-  <!-- Page Content -->
-  <div class="content">
-    <div class="row items-push">
-      <div class="col-md-6 col-xl-4">
-        <div class="block block-rounded h-100 mb-0">
-          <div class="block-header block-header-default">
-            <h3 class="block-title">
-              Welcome to your app
-            </h3>
-          </div>
-          <div class="block-content">
-            <p>
-              We’ve put everything together, so you can start working on your Laravel project as soon as possible! Dashmix assets are integrated and work seamlessly with Laravel Vite, so you can use the npm scripts as you would in any other Laravel project.
-            </p>
-            <p>
-              Feel free to use any examples you like from the full HTML version to build your own pages.
-            </p>
-            <p class="fw-semibold">
-              Wish you all the best and happy coding!
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6 col-xl-4">
-        <div class="block block-rounded h-100 mb-0">
-          <div class="block-header block-header-default">
-            <h3 class="block-title">
-              Block Title
-            </h3>
-          </div>
-          <div class="block-content font-size-sm text-muted">
-            <p>
-              ...
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6 col-xl-4">
-        <div class="block block-rounded h-100 mb-0">
-          <div class="block-header block-header-default">
-            <h3 class="block-title">
-              Block Title
-            </h3>
-          </div>
-          <div class="block-content font-size-sm text-muted">
-            <p>
-              ...
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6 col-xl-4">
-        <div class="block block-rounded h-100 mb-0">
-          <div class="block-header block-header-default">
-            <h3 class="block-title">
-              Block Title
-            </h3>
-          </div>
-          <div class="block-content font-size-sm text-muted">
-            <p>
-              ...
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6 col-xl-4">
-        <div class="block block-rounded h-100 mb-0">
-          <div class="block-header block-header-default">
-            <h3 class="block-title">
-              Block Title
-            </h3>
-          </div>
-          <div class="block-content font-size-sm text-muted">
-            <p>
-              ...
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6 col-xl-4">
-        <div class="block block-rounded h-100 mb-0">
-          <div class="block-header block-header-default">
-            <h3 class="block-title">
-              Block Title
-            </h3>
-          </div>
-          <div class="block-content font-size-sm text-muted">
-            <p>
-              ...
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6 col-xl-4">
-        <div class="block block-rounded h-100 mb-0">
-          <div class="block-header block-header-default">
-            <h3 class="block-title">
-              Block Title
-            </h3>
-          </div>
-          <div class="block-content font-size-sm text-muted">
-            <p>
-              ...
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6 col-xl-4">
-        <div class="block block-rounded h-100 mb-0">
-          <div class="block-header block-header-default">
-            <h3 class="block-title">
-              Block Title
-            </h3>
-          </div>
-          <div class="block-content font-size-sm text-muted">
-            <p>
-              ...
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6 col-xl-4">
-        <div class="block block-rounded h-100 mb-0">
-          <div class="block-header block-header-default">
-            <h3 class="block-title">
-              Block Title
-            </h3>
-          </div>
-          <div class="block-content font-size-sm text-muted">
-            <p>
-              ...
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- END Page Content -->
+    <!-- END Page Content -->
 @endsection

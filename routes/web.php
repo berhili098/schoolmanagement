@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\FiliereController;
+use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\SemestreController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -17,10 +18,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Example Routes
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::match(['get', 'post'], '/dashboard', function(){
-    return view('dashboard');
-});
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::group(['middleware'=>'auth'], function(){
+    Route::match(['get', 'post'], '/dashboard', [App\Http\Controllers\DashboardController::class, 'index']);
 Route::view('/pages/slick', 'pages.slick');
 Route::view('/enseignant/list', 'pages.enseignant.enseignant');
 Route::view('/enseignant/add', 'pages.enseignant.enseignant_add');
@@ -35,9 +35,14 @@ Route::get('/semestres/list', [SemestreController::class, 'index'])->name('semes
 Route::get('/semestres/add', [SemestreController::class, 'create'])->name('semestres.add');
 Route::post('/semestres/store', [SemestreController::class, 'store'])->name('semestres.store');
 
-Auth::routes();
+Route::get('/modules/list', [ModuleController::class, 'index'])->name('modules.list');
+Route::get('/modules/add', [ModuleController::class, 'create'])->name('modules.add');
+Route::post('/modules/store', [ModuleController::class, 'store'])->name('modules.store');
+
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 Route::get('/enseignant/list', [App\Http\Controllers\EnseignatsController::class, 'index'])->name('enseignantlist');
 Route::get('/enseignant/add', [App\Http\Controllers\EnseignatsController::class, 'create'])->name('enseignantadd');
 Route::post('/enseignant/addfun', [App\Http\Controllers\EnseignatsController::class, 'store'])->name('enseignantstore');
@@ -45,11 +50,20 @@ Route::post('/enseignant/addfun', [App\Http\Controllers\EnseignatsController::cl
 Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('userprofile');
 Route::post('/profile/edit', [App\Http\Controllers\ProfileController::class, 'update'])->name('profileedit');
 
+
 Route::get('/salle/list', [App\Http\Controllers\SalleController::class, 'index'])->name('sallelist');
 Route::get('/salle/add', [App\Http\Controllers\SalleController::class, 'create'])->name('salleadd');
 Route::post('/salle/store', [App\Http\Controllers\SalleController::class, 'store'])->name('sallestore');
+});
 
 
 Route::get('/groupe/add', [App\Http\Controllers\GroupeController::class, 'create'])->name('groupeadd');
 Route::post('/groupe/store', [App\Http\Controllers\GroupeController::class, 'store'])->name('groupestore');
 Route::get('/groupe/list', [App\Http\Controllers\GroupeController::class, 'index'])->name('groupelist');
+
+Auth::routes();
+
+Route::match(['get', 'post'], '/', function(){
+    return redirect('/login');
+});
+

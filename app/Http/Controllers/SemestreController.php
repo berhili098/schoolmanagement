@@ -43,7 +43,7 @@ class SemestreController extends Controller
         $new_semestre->date_fin =  $request->date_fin;
         $new_semestre->save();
         $semestres = semestre::all();
-        return redirect("semestres/list")->with('success', 'your message,here')->with("semestres", $semestres);
+        return redirect("semestres/list")->with('success', 'semestre ajoutée avec succée')->with("semestres", $semestres);
     }
 
     /**

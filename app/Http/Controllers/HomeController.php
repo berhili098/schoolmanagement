@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Filiere;
+use App\Models\module;
+use App\Models\salle;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +27,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('dashboard');
+        
+        $users = User::all()->count();
+        $modules = module::all()->count();
+        $filieres = Filiere::all()->count();
+        $salles = salle::all()->count();
+        return view('dashboard', compact('users', 'modules', 'filieres', 'salles'));
     }
 }
