@@ -37,3 +37,8 @@ Route::post('/semestres/store', [SemestreController::class, 'store'])->name('sem
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/enseignant/list', [App\Http\Controllers\EnseignatsController::class, 'index'])->name('enseignantlist');
+Route::get('/enseignant/add', [App\Http\Controllers\EnseignatsController::class, 'create'])->name('enseignantadd');
+Route::post('/enseignant/addfun', [App\Http\Controllers\EnseignatsController::class, 'store'])->name('enseignantstore');
+Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('userprofile');
+Route::post('/profile/edit', [App\Http\Controllers\ProfileController::class, 'update'])->name('profileedit');

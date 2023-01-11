@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\semestre;
+use App\Models\User;
 use Illuminate\Http\Request;
 
-class SemestreController extends Controller
+class EnseignatsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,10 @@ class SemestreController extends Controller
      */
     public function index()
     {
-        $semestres = semestre::all();
-        return view("pages.semesteres.semestre_list")->with("semestres", $semestres);
+
+       $users = User::orderBy('id', 'desc')->get();
+         return view('pages.enseignants.enseignat_list',compact('users'));
+
     }
 
     /**
@@ -25,7 +27,7 @@ class SemestreController extends Controller
      */
     public function create()
     {
-        return view("pages.semesteres.semestre_add");
+        return view('pages.enseignants.enseignant_add');
     }
 
     /**
@@ -36,14 +38,24 @@ class SemestreController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, ['nom_semestre' => 'required|unique:semestres', 'date_debut' => 'required', 'date_fin' => 'required']);
-        $new_semestre = new semestre();
-        $new_semestre->nom_semestre =  $request->nom_semestre;
-        $new_semestre->date_debut =  $request->date_debut;
-        $new_semestre->date_fin =  $request->date_fin;
-        $new_semestre->save();
-        $semestres = semestre::all();
-        return redirect("semestres/list")->with('success', 'your message,here')->with("semestres", $semestres);
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|unique:users,email',
+            // 'password' => 'required',
+            'type' => 'required',
+            'cin' => 'required',
+        ]);
+$str= $request->get('type');
+        $user = new User([
+            'name' => $request->get('name'),
+            'email' => $request->get('email'),
+            'password' => '123456789',
+            'type' =>intval($str),
+            'cin' => $request->get('cin'),
+            'picture'=>'default.png'
+        ]);
+        $user->save();
+        return redirect('/enseignant/list')->with('success', 'Enseignant saved!');
     }
 
     /**

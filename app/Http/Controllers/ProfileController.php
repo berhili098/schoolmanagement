@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\semestre;
+use App\Models\User;
+use Carbon\Carbon;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
-class SemestreController extends Controller
+class ProfileController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +18,8 @@ class SemestreController extends Controller
      */
     public function index()
     {
-        $semestres = semestre::all();
-        return view("pages.semesteres.semestre_list")->with("semestres", $semestres);
+        $user=Auth::user();
+        return view('pages.profile',compact('user'));
     }
 
     /**
@@ -25,7 +29,7 @@ class SemestreController extends Controller
      */
     public function create()
     {
-        return view("pages.semesteres.semestre_add");
+        //
     }
 
     /**
@@ -36,14 +40,7 @@ class SemestreController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, ['nom_semestre' => 'required|unique:semestres', 'date_debut' => 'required', 'date_fin' => 'required']);
-        $new_semestre = new semestre();
-        $new_semestre->nom_semestre =  $request->nom_semestre;
-        $new_semestre->date_debut =  $request->date_debut;
-        $new_semestre->date_fin =  $request->date_fin;
-        $new_semestre->save();
-        $semestres = semestre::all();
-        return redirect("semestres/list")->with('success', 'your message,here')->with("semestres", $semestres);
+        //
     }
 
     /**
@@ -75,9 +72,33 @@ class SemestreController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|unique:users,email,'.Auth::user()->id,
+            'cin' => 'required',
+        ]);
+
+
+        $user = User::find(Auth::user()->id);
+        $user->name =  $request->get('name');
+        $user->email = $request->get('email');
+        $user->cin = $request->get('cin');
+        if($request->get('password')!=''){
+            $user->password = Hash::make($request->get('password'));
+        }
+        if($request->Hasfile('picture')){
+            $file = $request->file('picture');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extension;
+            $file->move('images/',$filename);
+            $user->picture = $filename;
+        }
+        $user->save();
+        return view('dashboard',compact('user'))->with('success', 'Profile updated!');
+
+
     }
 
     /**

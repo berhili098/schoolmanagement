@@ -7,8 +7,7 @@
 
     <title>School manager</title>
 
-    <meta name="description"
-        content="Dashmix - Bootstrap 5 Admin Template &amp; UI Framework created by pixelcave and published on Themeforest">
+    <meta name="description" content="school manager">
     <meta name="author" content="pixelcave">
     <meta name="robots" content="noindex, nofollow">
 
@@ -71,7 +70,7 @@
       ''                                          Full width Main Content if no class is added
       'main-content-boxed'                        Full width Main Content with a specific maximum width (screen width > 1200px)
       'main-content-narrow'                       Full width Main Content with a percentage width (screen width > 1200px)
-        
+
     DARK MODE
 
       'sidebar-dark page-header-dark dark-mode'   Enable dark mode (light sidebar/header is not supported with dark mode)
@@ -275,22 +274,23 @@
                         <li class="nav-main-item{{ request()->is('pages/*') ? ' open' : '' }}">
                             <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true"
                                 aria-expanded="true" href="#">
-                                <i class="nav-main-link-icon fa fa-lightbulb"></i>
-                                <span class="nav-main-link-name">Ensignants</span>
+                                <i class="nav-main-link-icon fa fa-user"></i>
+                                <span class="nav-main-link-name">Enseignants</span>
                             </a>
                             <ul class="nav-main-submenu">
                                 <li class="nav-main-item">
-                                    <a class="nav-main-link{{ request()->is('ensignant/ensignant') ? ' active' : '' }}"
-                                        href="/enseignant/list">
-                                        <span class="nav-main-link-name">Lister les ensignants</span>
+                                    <a class="nav-main-link{{ request()->is('pages/enseignants/*') ? ' active' : '' }}"
+                                        href="{{ route('enseignantlist') }}">
+                                        <span class="nav-main-link-name">Liste</span>
                                     </a>
                                 </li>
                                 <li class="nav-main-item">
-                                    <a class="nav-main-link{{ request()->is('ensignant/ensignant_add') ? ' active' : '' }}"
-                                        href="/enseignant/add">
-                                        <span class="nav-main-link-name">Ajouter un ensignant</span>
+                                    <a class="nav-main-link{{ request()->is('pages/enseignants/*') ? ' active' : '' }}"
+                                        href="{{ route('enseignantadd') }}">
+                                        <span class="nav-main-link-name">Ajouter</span>
                                     </a>
                                 </li>
+
                             </ul>
                         </li>
                         <li class="nav-main-item{{ request()->is('pages/filieres/*') ? ' open' : '' }}">
@@ -316,7 +316,7 @@
 
                             </ul>
                         </li>
-                        
+
                         <li class="nav-main-item{{ request()->is('pages/semestres/*') ? ' open' : '' }}">
                             <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true"
                                 aria-expanded="true" href="#">
@@ -324,20 +324,28 @@
                                 <span class="nav-main-link-name">Semeteres</span>
                             </a>
                             <ul class="nav-main-submenu">
-                              <li class="nav-main-item">
-                                  <a class="nav-main-link{{ request()->is('pages/semestres/semestres_list') ? ' active' : '' }}"
-                                      href={{ route('semestres.list') }}>
-                                      <span class="nav-main-link-name">Lister les semesteres</span>
-                                  </a>
-                              </li>
-                              <li class="nav-main-item">
-                                  <a class="nav-main-link{{ request()->is('pages/semestres/semestres_add') ? ' active' : '' }}"
-                                      href={{ route('semestres.add') }}>
-                                      <span class="nav-main-link-name">Ajouter un semestere</span>
-                                  </a>
-                              </li>
-                          </ul>
+                                <li class="nav-main-item">
+                                    <a class="nav-main-link{{ request()->is('pages/semestres/semestres_list') ? ' active' : '' }}"
+                                        href={{ route('semestres.list') }}>
+                                        <span class="nav-main-link-name">Lister les semesteres</span>
+                                    </a>
+                                </li>
+                                <li class="nav-main-item">
+                                    <a class="nav-main-link{{ request()->is('pages/semestres/semestres_add') ? ' active' : '' }}"
+                                        href={{ route('semestres.add') }}>
+                                        <span class="nav-main-link-name">Ajouter un semestere</span>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
+                        <li class="nav-main-heading">More</li>
+                        <li class="nav-main-item">
+                            <a class="nav-main-link" href="/">
+                                <i class="nav-main-link-icon fa fa-globe"></i>
+                                <span class="nav-main-link-name">Landing</span>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
                 <!-- END Side Navigation -->
             </div>
@@ -361,9 +369,11 @@
 
                     <!-- Open Search Section -->
                     <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
-                    {{-- <button type="button" class="btn btn-alt-secondary" data-toggle="layout" data-action="header_search_on">
-            <i class="fa fa-fw opacity-50 fa-search"></i> <span class="ms-1 d-none d-sm-inline-block">Search</span>
-          </button> --}}
+                    <button type="button" class="btn btn-alt-secondary" data-toggle="layout"
+                        data-action="header_search_on">
+                        <i class="fa fa-fw opacity-50 fa-search"></i> <span
+                            class="ms-1 d-none d-sm-inline-block">Search</span>
+                    </button>
                     <!-- END Open Search Section -->
                 </div>
                 <!-- END Left Section -->
@@ -375,7 +385,7 @@
                         <button type="button" class="btn btn-alt-secondary" id="page-header-user-dropdown"
                             data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fa fa-fw fa-user d-sm-none"></i>
-                            <span class="d-none d-sm-inline-block">Admin</span>
+                            <span class="d-none d-sm-inline-block">{{ Auth::user()->name }}</span>
                             <i class="fa fa-fw fa-angle-down opacity-50 ms-1 d-none d-sm-inline-block"></i>
                         </button>
                         <div class="dropdown-menu dropdown-menu-end p-0" aria-labelledby="page-header-user-dropdown">
@@ -383,7 +393,7 @@
                                 User Options
                             </div>
                             <div class="p-2">
-                                <a class="dropdown-item" href="javascript:void(0)">
+                                <a class="dropdown-item" href="{{ route('userprofile') }}">
                                     <i class="far fa-fw fa-user me-1"></i> Profile
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center justify-content-between"
