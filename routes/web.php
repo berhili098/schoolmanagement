@@ -40,5 +40,11 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/enseignant/list', [App\Http\Controllers\EnseignatsController::class, 'index'])->name('enseignantlist');
 Route::get('/enseignant/add', [App\Http\Controllers\EnseignatsController::class, 'create'])->name('enseignantadd');
 Route::post('/enseignant/addfun', [App\Http\Controllers\EnseignatsController::class, 'store'])->name('enseignantstore');
+
 Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('userprofile');
 Route::post('/profile/edit', [App\Http\Controllers\ProfileController::class, 'update'])->name('profileedit');
+
+Route::get('/salle/list', [App\Http\Controllers\SalleController::class, 'index'])->name('sallelist');
+Route::get('/salle/add', [App\Http\Controllers\SalleController::class, 'create'])->name('salleadd');
+Route::post('/salle/store', [App\Http\Controllers\SalleController::class, 'store'])->name('sallestore');
+
