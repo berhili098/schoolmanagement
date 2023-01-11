@@ -7,7 +7,7 @@
 
   <title>School manager</title>
 
-  <meta name="description" content="Dashmix - Bootstrap 5 Admin Template &amp; UI Framework created by pixelcave and published on Themeforest">
+  <meta name="description" content="school manager">
   <meta name="author" content="pixelcave">
   <meta name="robots" content="noindex, nofollow">
 
@@ -70,7 +70,7 @@
       ''                                          Full width Main Content if no class is added
       'main-content-boxed'                        Full width Main Content with a specific maximum width (screen width > 1200px)
       'main-content-narrow'                       Full width Main Content with a percentage width (screen width > 1200px)
-        
+
     DARK MODE
 
       'sidebar-dark page-header-dark dark-mode'   Enable dark mode (light sidebar/header is not supported with dark mode)
@@ -254,25 +254,21 @@
             <li class="nav-main-heading">Various</li>
             <li class="nav-main-item{{ request()->is('pages/*') ? ' open' : '' }}">
               <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="true" href="#">
-                <i class="nav-main-link-icon fa fa-lightbulb"></i>
-                <span class="nav-main-link-name">Examples</span>
+                <i class="nav-main-link-icon fa fa-user"></i>
+                <span class="nav-main-link-name">Enseignants</span>
               </a>
               <ul class="nav-main-submenu">
                 <li class="nav-main-item">
-                  <a class="nav-main-link{{ request()->is('pages/datatables') ? ' active' : '' }}" href="/pages/datatables">
-                    <span class="nav-main-link-name">DataTables</span>
+                  <a class="nav-main-link{{ request()->is('pages/enseignants/*') ? ' active' : '' }}" href="{{ route('enseignantlist') }}">
+                    <span class="nav-main-link-name">Liste</span>
                   </a>
                 </li>
                 <li class="nav-main-item">
-                  <a class="nav-main-link{{ request()->is('pages/slick') ? ' active' : '' }}" href="/pages/slick">
-                    <span class="nav-main-link-name">Slick Slider</span>
+                  <a class="nav-main-link{{ request()->is('pages/enseignants/*') ? ' active' : '' }}" href="{{ route('enseignantadd') }}">
+                    <span class="nav-main-link-name">Ajouter</span>
                   </a>
                 </li>
-                <li class="nav-main-item">
-                  <a class="nav-main-link{{ request()->is('pages/blank') ? ' active' : '' }}" href="/pages/blank">
-                    <span class="nav-main-link-name">Blank</span>
-                  </a>
-                </li>
+
               </ul>
             </li>
             <li class="nav-main-heading">More</li>
@@ -318,7 +314,7 @@
           <div class="dropdown d-inline-block">
             <button type="button" class="btn btn-alt-secondary" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <i class="fa fa-fw fa-user d-sm-none"></i>
-              <span class="d-none d-sm-inline-block">Admin</span>
+              <span class="d-none d-sm-inline-block">{{ Auth::user()->name }}</span>
               <i class="fa fa-fw fa-angle-down opacity-50 ms-1 d-none d-sm-inline-block"></i>
             </button>
             <div class="dropdown-menu dropdown-menu-end p-0" aria-labelledby="page-header-user-dropdown">
@@ -326,7 +322,7 @@
                 User Options
               </div>
               <div class="p-2">
-                <a class="dropdown-item" href="javascript:void(0)">
+                <a class="dropdown-item" href="{{ route('userprofile') }}">
                   <i class="far fa-fw fa-user me-1"></i> Profile
                 </a>
                 <a class="dropdown-item d-flex align-items-center justify-content-between" href="javascript:void(0)">
@@ -494,7 +490,7 @@
             Crafted with <i class="fa fa-heart text-danger"></i> by <a class="fw-semibold" href="https://1.envato.market/ydb" target="_blank">pixelcave</a>
           </div>
           <div class="col-sm-6 order-sm-1 text-center text-sm-start">
-            <a class="fw-semibold" href="https://1.envato.market/r6y" target="_blank">Dashmix</a> &copy;
+            <a class="fw-semibold" href="" target="_blank">school manager</a> &copy;
             <span data-toggle="year-copy"></span>
           </div>
         </div>
