@@ -10,11 +10,11 @@
                         <div class="item rounded-3 bg-body mx-auto my-3">
                             <i class="fa fa-users fa-lg text-primary"></i>
                         </div>
-                        <div class="fs-1 fw-bold">{{$users}}</div>
+                        <div class="fs-1 fw-bold">{{ $users->count() }}</div>
                         <div class="text-muted mb-3">Enregistrements</div>
                     </div>
                     <div class="block-content block-content-full block-content-sm bg-body-light fs-sm">
-                        <a class="fw-medium" href="">
+                        <a class="fw-medium" href={{ route('enseignantlist') }}>
                             Lister tout les utilisateurs
                             <i class="fa fa-arrow-right ms-1 opacity-25"></i>
                         </a>
@@ -27,12 +27,12 @@
                         <div class="item rounded-3 bg-body mx-auto my-3">
                             <i class="fa fa-level-up-alt fa-lg text-primary"></i>
                         </div>
-                        <div class="fs-1 fw-bold">{{$filieres}}</div>
+                        <div class="fs-1 fw-bold">{{ $filieres->count() }}</div>
                         <div class="text-muted mb-3">Filieres</div>
                     </div>
                     <div class="block-content block-content-full block-content-sm bg-body-light fs-sm">
-                        <a class="fw-medium" href="javascript:void(0)">
-                            Explore analytics
+                        <a class="fw-medium" href={{ route('filieres.list') }}>
+                            Lister les filieres
                             <i class="fa fa-arrow-right ms-1 opacity-25"></i>
                         </a>
                     </div>
@@ -44,12 +44,12 @@
                         <div class="item rounded-3 bg-body mx-auto my-3">
                             <i class="fa fa-book fa-lg text-primary"></i>
                         </div>
-                        <div class="fs-1 fw-bold">{{$modules}}</div>
+                        <div class="fs-1 fw-bold">{{ $modules->count() }}</div>
                         <div class="text-muted mb-3">Modules</div>
                     </div>
                     <div class="block-content block-content-full block-content-sm bg-body-light fs-sm">
-                        <a class="fw-medium" href="javascript:void(0)">
-                            View all sales
+                        <a class="fw-medium" href={{ route('modules.list') }}>
+                            Lister les modules
                             <i class="fa fa-arrow-right ms-1 opacity-25"></i>
                         </a>
                     </div>
@@ -61,18 +61,21 @@
                         <div class="item rounded-3 bg-body mx-auto my-3">
                             <i class="fa fa-house-user fa-lg text-primary"></i>
                         </div>
-                        <div class="fs-1 fw-bold">{{$salles}}</div>
+                        <div class="fs-1 fw-bold">{{ $salles->count() }}</div>
                         <div class="text-muted mb-3">Salles</div>
                     </div>
                     <div class="block-content block-content-full block-content-sm bg-body-light fs-sm">
-                        <a class="fw-medium" href="javascript:void(0)">
-                            Withdrawal options
+                        <a class="fw-medium" href={{ route('sallelist') }}>
+                            Lister les salles
                             <i class="fa fa-arrow-right ms-1 opacity-25"></i>
                         </a>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+        
+
+
+
     <!-- END Page Content -->
 @endsection
