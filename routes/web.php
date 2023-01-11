@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\FiliereController;
+use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\SemestreController;
 use Illuminate\Support\Facades\Route;
 
@@ -33,6 +34,10 @@ Route::post('/filieres/store', [FiliereController::class, 'store'])->name('filie
 Route::get('/semestres/list', [SemestreController::class, 'index'])->name('semestres.list');
 Route::get('/semestres/add', [SemestreController::class, 'create'])->name('semestres.add');
 Route::post('/semestres/store', [SemestreController::class, 'store'])->name('semestres.store');
+
+Route::get('/modules/list', [ModuleController::class, 'index'])->name('modules.list');
+Route::get('/modules/add', [ModuleController::class, 'create'])->name('modules.add');
+Route::post('/modules/store', [ModuleController::class, 'store'])->name('modules.store');
 
 Auth::routes();
 

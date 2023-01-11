@@ -320,7 +320,7 @@
                         <li class="nav-main-item{{ request()->is('pages/semestres/*') ? ' open' : '' }}">
                             <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true"
                                 aria-expanded="true" href="#">
-                                <i class="nav-main-link-icon fa fa-lightbulb"></i>
+                                <i class="nav-main-link-icon fa fa-calendar"></i>
                                 <span class="nav-main-link-name">Semeteres</span>
                             </a>
                             <ul class="nav-main-submenu">
@@ -334,6 +334,27 @@
                                     <a class="nav-main-link{{ request()->is('pages/semestres/semestres_add') ? ' active' : '' }}"
                                         href={{ route('semestres.add') }}>
                                         <span class="nav-main-link-name">Ajouter un semestere</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-main-item{{ request()->is('pages/modules/*') ? ' open' : '' }}">
+                            <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true"
+                                aria-expanded="true" href="#">
+                                <i class="nav-main-link-icon fa fa-book"></i>
+                                <span class="nav-main-link-name">Modules</span>
+                            </a>
+                            <ul class="nav-main-submenu">
+                                <li class="nav-main-item">
+                                    <a class="nav-main-link{{ request()->is('pages/modules/modules_list') ? ' active' : '' }}"
+                                        href={{ route('modules.list') }}>
+                                        <span class="nav-main-link-name">Lister les Modules</span>
+                                    </a>
+                                </li>
+                                <li class="nav-main-item">
+                                    <a class="nav-main-link{{ request()->is('pages/modules/modules_add') ? ' active' : '' }}"
+                                        href={{ route('modules.add') }}>
+                                        <span class="nav-main-link-name">Ajouter un Module</span>
                                     </a>
                                 </li>
                             </ul>

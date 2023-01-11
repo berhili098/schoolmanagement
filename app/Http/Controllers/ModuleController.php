@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Filiere;
+use App\Models\module;
+use App\Models\User;
 use Illuminate\Http\Request;
 
-class FiliereController extends Controller
+class ModuleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +16,8 @@ class FiliereController extends Controller
      */
     public function index()
     {
-        $filieres = Filiere::all();
-        return view("pages.filieres.filieres_list")->with("filieres", $filieres);
+        $modules = module::all();
+        return view("pages.modules.modules_list")->with("modules", $modules);
     }
 
     /**
@@ -25,7 +27,9 @@ class FiliereController extends Controller
      */
     public function create()
     {
-        return view("pages.filieres.filieres_add");
+        $users = User::all();
+        $filieres = Filiere::all();
+        return view("pages.modules.modules_add")->with("users", $users)->with("filieres", $filieres);
     }
 
     /**
@@ -36,14 +40,8 @@ class FiliereController extends Controller
      */
     public function store(Request $request)
     {
-
-        $validated = $this->validate($request, ['nom_filiere' => 'required|unique:filieres']);
-
-        $new_filiere = new Filiere();
-        $new_filiere->nom_filiere =  $request->nom_filiere;
-        $new_filiere->save();
-        $filieres = Filiere::all();
-        return redirect("filieres/list")->with('success', 'filiere ajoutée avec succée')->with("filieres", $filieres);
+        $module = new module();
+        $module->nom_module = $request->nom_module;
     }
 
     /**
