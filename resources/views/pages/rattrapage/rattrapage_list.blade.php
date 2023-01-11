@@ -30,10 +30,10 @@
   <div class="bg-body-light">
     <div class="content content-full">
       <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center">
-        <h1 class="flex-grow-1 fs-3 fw-semibold my-2 my-sm-3">Groupe</h1>
+        <h1 class="flex-grow-1 fs-3 fw-semibold my-2 my-sm-3">Rattrapage</h1>
         <nav class="flex-shrink-0 my-2 my-sm-0 ms-sm-3" aria-label="breadcrumb">
           <ol class="breadcrumb">
-            <li class="breadcrumb-item">Groupe</li>
+            <li class="breadcrumb-item">Rattrapage</li>
             <li class="breadcrumb-item active" aria-current="page">Listes</li>
           </ol>
         </nav>
@@ -48,7 +48,7 @@
 
     <div class="block block-rounded">
       <div class="block-header block-header-default">
-        <h3 class="block-title">Liste des Groupe </h3>
+        <h3 class="block-title">Liste des Rattrapages </h3>
       </div>
       <div class="block-content block-content-full">
         <!-- DataTables init on table by adding .js-dataTable-buttons class, functionality is initialized in js/pages/tables_datatables.js -->
@@ -56,41 +56,46 @@
           <thead>
             <tr>
               <th class="text-center" style="width: 80px;">#</th>
-              <th>Filliere</th>
-              <th>Enseignant</th>
-              <th>Cours</th>
-              <th class="d-none d-sm-table-cell" style="width: 30%;">Section</th>
+              <th>Date</th>
+              <th>Salle</th>
+              <th>Groupe</th>
+              <th class="d-none d-sm-table-cell" style="width: 30%;">Module</th>
               <th style="width: 15%;">Crée dans</th>
             </tr>
           </thead>
           <tbody>
-            @foreach ( $groupes as $groupe )
+            @foreach ( $rattrapages as $rattrapage )
 
             <tr>
-                <td class="text-center"> {{ $groupe->id }} </td>
+                <td class="text-center"> {{ $rattrapage->id }} </td>
                 <td class="fw-semibold">
-                  <a href="javascript:void(0)">{{ $groupe->filiere->nom_filiere }}</a>
+                    {{ $rattrapage->date }}
+                   </td>
+                <td class="fw-semibold">
+                  <a href="javascript:void(0)">{{ $rattrapage->salle->nom }}</a>
                 </td>
+
                 <td class="fw-semibold">
-                  <a href="javascript:void(0)">{{ $groupe->enseignant->name }}</a>
+                  <a href="javascript:void(0)"> @if ( $rattrapage->groupe->type==0 )
+                    TD
+                @elseif ( $rattrapage->groupe->type==1)
+                    TP
+                @else
+                    COURS
+                @endif
+                ( Section{{ $rattrapage->groupe->section }} / {{ $rattrapage->groupe->enseignant->name }} )</a>
                 </td>
                 <td class="fw-semibold">
                   <a href="javascript:void(0)">
-                    @if ( $groupe->type==0 )
-                        TD
-                    @elseif ( $groupe->type==1)
-                        TP
-                    @else
-                        COURS
-                    @endif
+                   {{ $rattrapage->module->nom_module }}
 
                  </a>
                 </td>
-                <td class="d-none d-sm-table-cell">
+                {{-- <td class="d-none d-sm-table-cell">
                    Section {{ $groupe->section }}
-                </td>
+                </td> --}}
                 <td class="text-muted">
-                 {{ $groupe->created_at->diffForHumans() }}
+                 {{ $rattrapage->created_at->diffForHumans() }}
                 </td>
               </tr>
             @endforeach

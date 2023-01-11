@@ -34,11 +34,11 @@
             <h2 class="content-heading">Information</h2>
             <div class="row items-push">
               <div class="col-lg-4">
-                @if ($errors->any())
-                <span class="invalid-feedback" role="alert" style="display: block">
-                  <strong>{{ $errors->first() }}</strong>
-              </span>
-            @endif
+    @if ($errors->any())
+                                        <span class="invalid-feedback" role="alert" style="display: block">
+                                          <strong>{{ $errors->first() }}</strong>
+                                      </span>
+                                    @endif
               </div>
               <div class="col-lg-8 col-xl-5">
                 <div class="mb-4">

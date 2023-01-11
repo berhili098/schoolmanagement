@@ -26,6 +26,11 @@ class Rattrapage extends Model
         return $this->belongsTo(Groupe::class, 'groupe_id');
     }
 
+    public function module()
+    {
+        return $this->belongsTo(module::class, 'module_id');
+    }
+
 
 
 

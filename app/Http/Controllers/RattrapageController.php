@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Groupe;
+use App\Models\module;
+use App\Models\Rattrapage;
+use App\Models\salle;
 use Illuminate\Http\Request;
+use PHPUnit\TextUI\XmlConfiguration\Group;
 
 class RattrapageController extends Controller
 {
@@ -13,7 +18,8 @@ class RattrapageController extends Controller
      */
     public function index()
     {
-        //
+       $rattrapages=     Rattrapage::all();
+        return view('pages.rattrapage.rattrapage_list',compact('rattrapages'));
     }
 
     /**
@@ -23,7 +29,13 @@ class RattrapageController extends Controller
      */
     public function create()
     {
-        //
+        $salles= salle::all();
+        $groupes=Groupe::all();
+        $modules = module::all();
+
+
+
+        return view('pages.rattrapage.rattrapage_add',compact('salles', 'groupes', 'modules'));
     }
 
     /**
@@ -34,7 +46,26 @@ class RattrapageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'date' => 'required',
+            'salle' => 'required',
+            'groupe' => 'required',
+            'module' => 'required',
+        ]);
+
+        $rattrapage = new Rattrapage([
+
+            'date' => $request->get('date'),
+            'salle_id' => $request->get('salle'),
+            'groupe_id' => $request->get('groupe'),
+            'module_id' => $request->get('module'),
+
+        ]);
+        $rattrapage->save();
+        return redirect('/rattrapage/list')->with('success', 'Rattrapage saved!');
+
+
+
     }
 
     /**

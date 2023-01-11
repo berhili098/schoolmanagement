@@ -420,7 +420,7 @@
                                 </li>
                                 <li class="nav-main-item">
                                     <a class="nav-main-link{{ request()->is('pages/semestres/semestres_add') ? ' active' : '' }}"
-                                        href={{ route('groupeadd') }}>
+                                        href={{ route('rattrapageadd') }}>
                                         <span class="nav-main-link-name">Ajouter</span>
                                     </a>
                                 </li>

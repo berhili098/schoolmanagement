@@ -61,6 +61,12 @@ Route::get('/groupe/add', [App\Http\Controllers\GroupeController::class, 'create
 Route::post('/groupe/store', [App\Http\Controllers\GroupeController::class, 'store'])->name('groupestore');
 Route::get('/groupe/list', [App\Http\Controllers\GroupeController::class, 'index'])->name('groupelist');
 
+
+Route::get('/rattrapage/add', [App\Http\Controllers\RattrapageController::class, 'create'])->name('rattrapageadd');
+Route::post('/rattrapage/store', [App\Http\Controllers\RattrapageController::class, 'store'])->name('rattrapageestore');
+Route::get('/rattrapage/list', [App\Http\Controllers\RattrapageController::class, 'index'])->name('rattrapagelist');
+
+
 Auth::routes();
 
 Route::match(['get', 'post'], '/', function(){
