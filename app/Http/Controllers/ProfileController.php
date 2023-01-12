@@ -96,7 +96,7 @@ class ProfileController extends Controller
             $user->picture = $filename;
         }
         $user->save();
-        return view('dashboard',compact('user'))->with('success', 'Profile updated!');
+        return redirect('/dashboard')->with('success', 'Profile updated!');
 
 
     }

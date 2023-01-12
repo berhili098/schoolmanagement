@@ -60,7 +60,7 @@
                                                     </span>
                                                 @enderror
                                             <div class="mb-4">
-                                                
+
                                                 <input id="email" type="email"
                                                     class="form-control form-control-lg form-control-alt @error('email') is-invalid @enderror "
                                                     name="email" value="{{ old('email') }}" required
@@ -72,7 +72,7 @@
                                                     </span>
                                                 @enderror
                                             <div class="mb-4">
-                                                
+
                                                 <input
                                                     class="form-control form-control-lg form-control-alt @error('password') is-invalid @enderror"
                                                     id="password" name="password" type="password" placeholder="Password">
@@ -126,7 +126,7 @@
 
     <!--
       Dashmix JS
-    
+
       Core libraries and functionality
       webpack is putting everything together at assets/_js/main/app.js
     -->

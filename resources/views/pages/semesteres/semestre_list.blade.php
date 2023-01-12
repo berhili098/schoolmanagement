@@ -67,7 +67,7 @@
                             <th>Nom de semestre</th>
                             <th class="d-none d-sm-table-cell" style="width: 30%;">Date de debut</th>
                             <th class="d-none d-sm-table-cell" style="width: 30%;">Date de fin</th>
-                            <th class="d-none d-sm-table-cell" style="width: 30%;">Date de création</th>
+                            <th class="d-none d-sm-table-cell" style="width: 30%;">Cree dans</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -84,7 +84,7 @@
                                     {{explode(" ", $semestre->date_fin)[0]  }}
                                 </td>
                                 <td class="d-none d-sm-table-cell">
-                                    {{ $semestre->created_at }}
+                                    {{ $semestre->created_at->diffForHumans() }}
                                 </td>
                             </tr>
                         @endforeach

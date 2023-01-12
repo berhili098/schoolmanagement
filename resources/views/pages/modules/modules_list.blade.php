@@ -70,7 +70,7 @@
                             <th class="d-none d-sm-table-cell">Filiere</th>
                             <th class="d-none d-sm-table-cell col-2">Salle</th>
                             <th class="d-none d-sm-table-cell col-2">Nb heure</th>
-                            <th class="d-none d-sm-table-cell col-3">Date de creation</th>
+                            <th class="d-none d-sm-table-cell col-3">Cree dans</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -95,7 +95,7 @@
                                     {{ $module->nb_heure}}
                                 </td>
                                 <td class="d-none d-sm-table-cell">
-                                    {{ $module->created_at }}
+                                    {{ $module->created_at->diffForHumans() }}
                                 </td>
                             </tr>
                         @endforeach

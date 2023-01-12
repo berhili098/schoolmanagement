@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class EnseignatsController extends Controller
 {
@@ -49,7 +50,7 @@ $str= $request->get('type');
         $user = new User([
             'name' => $request->get('name'),
             'email' => $request->get('email'),
-            'password' => '123456789',
+            'password' => Hash::make('123456789'),
             'type' =>intval($str),
             'cin' => $request->get('cin'),
             'picture'=>'default.png'

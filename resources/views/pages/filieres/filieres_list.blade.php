@@ -65,7 +65,7 @@
                         <tr>
                             <th class="text-center" style="width: 80px;">#</th>
                             <th>Nom de filière</th>
-                            <th class="d-none d-sm-table-cell" style="width: 30%;">Date de création</th>
+                            <th class="d-none d-sm-table-cell" style="width: 30%;">Cree dans</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -76,7 +76,7 @@
                                     <a href="javascript:void(0)">{{ $filiere->nom_filiere }}</a>
                                 </td>
                                 <td class="d-none d-sm-table-cell">
-                                    {{ $filiere->created_at }}
+                                    {{ $filiere->created_at->diffForHumans() }}
                                 </td>
                             </tr>
                         @endforeach
